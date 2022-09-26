@@ -1,10 +1,7 @@
 <template>
-  <p>hello</p>
+  <NuxtPage/>
 </template>
 
-<script>
-import './../assets/scss/styles.scss'
-</script>
 
 <style>
 

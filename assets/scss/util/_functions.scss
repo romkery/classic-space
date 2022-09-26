@@ -1,5 +1,5 @@
 @use 'sass:math';
-@use './../globals/variables' as v;
+@import './../globals/variables';
 
 @function rem($pixels) {
   @if (math.is-unitless($pixels)) {
@@ -17,7 +17,7 @@
   }
 }
 
-@function theme-var($key, $fallback: null, $map: v.$theme-map-light) {
+@function theme-var($key, $fallback: null, $map: $theme-map-light) {
   @if not map-has-key($map, $key) {
     @error "key: '#{$key}', is not a key in map: #{$map}";
   }

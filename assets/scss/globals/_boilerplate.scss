@@ -1,5 +1,5 @@
-@use './../util/functions' as f;
-@import './../globals/variables';
+@use './../util' as u;
+@import './../globals/_variables.scss';
 
 html {
   box-sizing: border-box;
@@ -9,9 +9,14 @@ html {
 body {
   padding: 0;
   margin: 0;
-  background-color: f.theme-var($--background-primary);
+  background-color: var(--v-theme-background);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden !important;
-  color: f.theme-var($--font-color);
+  color: var(--v-theme-color);
   transition: 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.router-link-exact-active, .router-link-exact-active, a {
+  color: white;
 }
