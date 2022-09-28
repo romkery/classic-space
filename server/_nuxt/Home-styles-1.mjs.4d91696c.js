@@ -1,0 +1,5 @@
+const Home_vue_vue_type_style_index_0_lang = ".home{background:url(" + globalThis.__buildAssetsURL("sky-bg.1f186857.png") + ") repeat;height:100%;padding:0 min(10vh,50rem);width:100%}.home__title{align-items:center;display:flex;height:100vh;width:100%}.home__title h1{-webkit-animation-duration:1.5s;animation-duration:1.5s;padding-right:min(10vh,6.25rem)}@media (max-width:47.9375em){.home__title h1{font-size:calc(1.25rem + 2.65625vw - 3.98438px)}}@media (min-width:47.9375em){.home__title h1{font-size:calc(1.25rem + 1.5625vw)}}.home__title img{-webkit-animation-duration:2.5s;animation-duration:2.5s;height:31.25rem;-o-object-fit:cover;object-fit:cover;width:28.125rem}.home__info{display:flex;flex-direction:column}.home__info h2{-webkit-animation-duration:2.5s;animation-duration:2.5s;text-align:center}@media (max-width:47.9375em){.home__info h2{font-size:calc(1.25rem + 2.21354vw - 3.32031px)}}@media (min-width:47.9375em){.home__info h2{font-size:calc(1.25rem + 1.30208vw)}}";
+export {
+  Home_vue_vue_type_style_index_0_lang as default
+};
+//# sourceMappingURL=Home-styles-1.mjs.4d91696c.js.map
