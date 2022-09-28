@@ -1,1 +1,0 @@
-import{_ as o}from"./_plugin-vue_export-helper.a1a6add7.js";import{e as t,o as c,c as n}from"./entry.a68ea267.js";const r={};function s(a,_){const e=t("NuxtPage");return c(),n(e)}const p=o(r,[["render",s]]);export{p as default};
