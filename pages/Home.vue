@@ -1,28 +1,37 @@
 <template>
   <div class="home">
     <div class="home__title">
-      <h1 class="animate__animated animate__slideInLeft">DO YOU WANT TO GO TO SPACE?</h1>
+      <h1 class="animate__animated animate__slideInLeft"
+          v-show="imageLoaded">DO YOU WANT TO GO TO SPACE?</h1>
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Earth_Western_Hemisphere_transparent_background.png/1024px-Earth_Western_Hemisphere_transparent_background.png"
+        v-show="imageLoaded"
+        loading="lazy"
+        @load="imageLoaded = true"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Earth_Western_Hemisphere_transparent_background.png/1200px-Earth_Western_Hemisphere_transparent_background.png"
         alt="earth"
         class="animate__animated animate__slideInRight">
     </div>
-    <v-lazy>
-      <div class="home__info">
+    <div class="home__info">
+      <v-lazy>
         <h2 class="animate__animated animate__fadeInUp">HERE YOU CAN SEE...</h2>
-        <div class="home__info-mars animate__animated animate__fadeInUp">
-          <img
-            src="http://cdn.iz.ru/sites/default/files/styles/900x506/public/news-2017-11/20170523_sha_z03_456.jpg?itok=xpL1E0Gf"
-            alt="mars"/>
-          <p>The latest photos<br> and<br> videos<br> from the rovers.</p>
-        </div>
-      </div>
-    </v-lazy>
+      </v-lazy>
+      <HomeCard
+        v-for="card in store.cards"
+        :imgSrc="card.imgSrc"
+        :flexDirection="card.flexDirection"
+        :text="card.text"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 
+import {useHomeCardStore} from '~/store/Home';
+import HomeCard from '../components/utils/HomeCard.vue';
+
+const store = useHomeCardStore()
+const imageLoaded = ref(false);
 </script>
 
 <style lang="scss">
@@ -64,25 +73,47 @@
       animation-duration: 2.5s;
     }
 
-    &-mars {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-
-      img {
-        width: rem(400);
-        height: rem(400);
-        border-radius: rem(10);
-      }
-
-      p {
-        flex-grow: 1;
-        @include adaptive_font(60, 20);
-        word-break: break-all;
-        text-align: center;
-      }
-    }
+    //&-mars {
+    //  width: 100%;
+    //  height: 100vh;
+    //  display: flex;
+    //  align-items: center;
+    //
+    //  img {
+    //    width: rem(400);
+    //    height: rem(400);
+    //    border-radius: rem(10);
+    //    object-fit: cover;
+    //  }
+    //
+    //  p {
+    //    flex-grow: 1;
+    //    @include adaptive_font(60, 20);
+    //    word-break: break-all;
+    //    text-align: center;
+    //  }
+    //}
+    //
+    //&-news {
+    //  width: 100%;
+    //  height: 100vh;
+    //  display: flex;
+    //  align-items: center;
+    //
+    //  img {
+    //    width: rem(400);
+    //    height: rem(400);
+    //    border-radius: rem(10);
+    //    object-fit: cover;
+    //  }
+    //
+    //  p {
+    //    flex-grow: 1;
+    //    @include adaptive_font(60, 20);
+    //    word-break: break-all;
+    //    text-align: center;
+    //  }
+    //}
   }
 
 }

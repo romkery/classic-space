@@ -11,9 +11,11 @@
     "nuxt": "3.0.0-rc.11"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.2",
     "animate.css": "^4.1.1",
     "mdi": "^2.2.43",
     "sass": "^1.55.0",
+    "vue-fragment": "^1.6.0",
     "vuetify": "^3.0.0-beta.11"
   }
 }

@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     target: "server",
 
     css: ['~/assets/scss/globals/_boilerplate.scss',
-        'vuetify/lib/styles/main.sass',
+        'vuetify/lib/styles/main.css',
         'mdi/css/materialdesignicons.min.css'
     ],
     build: {
@@ -19,4 +19,7 @@ export default defineNuxtConfig({
             preprocessorOptions: {},
         },
     },
+    modules: [
+        '@pinia/nuxt',
+    ],
 })
