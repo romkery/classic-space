@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[227],{7227:(d,n,e)=>{e.r(n),e.d(n,{default:()=>o});var t=e(1432);function s(a,l){const r=(0,t.up)("NuxtPage");return(0,t.wg)(),(0,t.j4)(r)}var u=e(3046);const c={},o=(0,u.Z)(c,[["render",s]])}}]);
