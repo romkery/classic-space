@@ -1,11 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "build": "nuxi build",
+    "dev": "nuxi dev",
+    "generate": "DEPLOY_ENV=GH_PAGES nuxi generate",
+    "preview": "nuxi preview",
+    "postinstall": "nuxi prepare",
+    "deploy": "gh-pages -d .output/public"
   },
   "devDependencies": {
     "nuxt": "3.0.0-rc.11"
@@ -13,6 +14,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.2",
     "animate.css": "^4.1.1",
+    "gh-pages": "^4.0.0",
     "mdi": "^2.2.43",
     "sass": "^1.55.0",
     "vue-fragment": "^1.6.0",

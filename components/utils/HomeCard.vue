@@ -1,5 +1,5 @@
 <template>
-  <v-lazy min-height="100vh">
+  <v-lazy>
     <div class="home__info-news animate__animated animate__fadeInUp">
       <p v-html="replaceWithBr(props.text)"/>
       <img
@@ -37,16 +37,22 @@ function replaceWithBr(text: string) {
   animation-delay: .5s;
 
   img {
-    width: rem(500);
-    height: rem(500);
+    width: min(30vw, rem(500));
+    height: min(30vw, rem(500));
     border-radius: rem(10);
     object-fit: cover;
   }
 
   p {
     flex-grow: 1;
-    @include adaptive_font(60, 20);
+    @include adaptive_font(60, 10);
     word-break: break-all;
+    text-align: center;
+  }
+
+  @include breakpoint-down(sm) {
+    flex-direction: column-reverse;
+    justify-content: center;
     text-align: center;
   }
 }

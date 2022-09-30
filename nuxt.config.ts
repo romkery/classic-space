@@ -2,14 +2,21 @@
 
 export default defineNuxtConfig({
     ssr: false,
-    target: "server",
+    target: "static",
 
+    app: {
+        baseURL: "./"
+    },
+    router: {
+        trailingSlash: false
+    },
     css: ['~/assets/scss/globals/_boilerplate.scss',
         'vuetify/lib/styles/main.css',
-        'mdi/css/materialdesignicons.min.css'
+        'mdi/css/materialdesignicons.min.css',
+        'animate.css'
     ],
     build: {
-        transpile: ['vuetify'],
+        // transpile: ['vuetify'],
     },
     vite: {
         define: {
