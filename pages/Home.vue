@@ -1,25 +1,29 @@
 <template>
-  <div class="home" v-show="imageLoaded">
+  <div class="home">
     <div class="home__title">
-      <h1 class="animate__animated animate__slideInLeft">DO YOU WANT TO GO TO SPACE?</h1>
+      {{ setChecked('isTitleChecked') }}
+      <h1 :class="!store.isTitleChecked && ['animate__animated',  'animate__slideInLeft']">DO YOU WANT TO GO TO
+        SPACE?</h1>
       <img
-        v-show="imageLoaded"
-        @load="imageLoaded = true"
         src="../assets/img/home/earth.png"
         alt="earth"
-        class="animate__animated animate__slideInRight">
+        :class="!store.isTitleChecked && ['animate__animated', 'animate__slideInRight']">
     </div>
-    <div class="home__info">
-      <v-lazy>
-        <h2 class="animate__animated animate__fadeInUp">HERE YOU CAN SEE...</h2>
-      </v-lazy>
-      <HomeCard
-        v-for="card in store.cards"
-        :imgSrc="card.imgSrc"
-        :flexDirection="card.flexDirection"
-        :text="card.text"
-      />
-    </div>
+    <v-lazy>
+      <div class="home__info">
+        {{ setChecked('isInfoChecked') }}
+        <h2 :class="!store.isInfoChecked && ['animate__animated', 'animate__fadeInUp']">
+          HERE YOU CAN SEE...
+        </h2>
+        <HomeCard
+          v-for="card in store.cards"
+          :imgSrc="card.imgSrc"
+          :flexDirection="card.flexDirection"
+          :text="card.text"
+          :store="store"
+        />
+      </div>
+    </v-lazy>
   </div>
 </template>
 
@@ -28,18 +32,25 @@
 import {useHomeCardStore} from '~/store/Home';
 import HomeCard from '../components/utils/HomeCard.vue';
 
-const store = useHomeCardStore()
-const imageLoaded = ref(false);
+const {store} = useHomeCardStore();
+const bg = 'assets/img/sky-bg.png';
+
+const setChecked = (key: string) => {
+  setTimeout(() => {
+    store[key] = true;
+  }, 3000)
+}
+
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use './assets/scss/util' as *;
 
 .home {
   width: 100%;
   height: 100%;
   padding: 0 min(5vw, rem(50));
-  background: url("../assets/img/sky-bg.png") repeat;
+  background: url("assets/img/sky-bg.png");
 
   &__title {
     display: flex;
@@ -76,6 +87,7 @@ const imageLoaded = ref(false);
       @include adaptive_font(70, 20);
       text-align: center;
       animation-duration: 2.5s;
+      animation-delay: 1s;
     }
 
     @include breakpoint-down(sm) {

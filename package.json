@@ -3,21 +3,24 @@
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
-    "generate": "DEPLOY_ENV=GH_PAGES nuxi generate",
+    "generate": "NODE_ENV=production nuxi generate",
     "preview": "nuxi preview",
     "postinstall": "nuxi prepare",
-    "deploy": "gh-pages -d .output/public"
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "nuxt": "3.0.0-rc.11"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.4.2",
+    "@nuxt/webpack-builder": "^3.0.0-rc.11",
+    "@pinia/nuxt": "0.4.3",
+    "@vueuse/core": "^9.3.0",
     "animate.css": "^4.1.1",
     "gh-pages": "^4.0.0",
     "mdi": "^2.2.43",
+    "pinia": "^2.0.23",
     "sass": "^1.55.0",
-    "vue-fragment": "^1.6.0",
+    "sass-loader": "^13.0.2",
     "vuetify": "^3.0.0-beta.11"
   }
 }

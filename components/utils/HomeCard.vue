@@ -1,19 +1,22 @@
 <template>
-  <v-lazy>
-    <div class="home__info-news animate__animated animate__fadeInUp">
-      <p v-html="replaceWithBr(props.text)"/>
-      <img
-        :src="props.imgSrc"
-        alt="card"/>
-    </div>
-  </v-lazy>
+  <div :class="[!props.store.isInfoChecked &&
+    ['animate__animated', 'animate__fadeInUp'], ['home__info-news']]">
+    <p v-html="replaceWithBr(props.text)"/>
+    <img
+      :src="props.imgSrc"
+      alt="card"/>
+  </div>
 </template>
 
 <script setup lang="ts">
+
 interface IProps {
   imgSrc: string,
   text: string,
   flexDirection: string
+  store: {
+    isInfoChecked: boolean
+  }
 }
 
 const props = defineProps<IProps>();
@@ -34,7 +37,7 @@ function replaceWithBr(text: string) {
   display: flex;
   flex-direction: v-bind(fd);
   align-items: center;
-  animation-delay: .5s;
+  animation-delay: 1.5s;
 
   img {
     width: min(30vw, rem(500));

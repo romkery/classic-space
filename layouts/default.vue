@@ -7,10 +7,8 @@
   </v-app>
 </template>
 
-<script setup>
+<script setup></script>
 
-
-</script>
 
 <style>
 

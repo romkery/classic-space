@@ -8,6 +8,7 @@
 
 
 <script setup lang="ts">
+import 'animate.css'
 
 onMounted(() => {
   const route = useRouter();
