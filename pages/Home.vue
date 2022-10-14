@@ -77,7 +77,7 @@ const onElementVisibility = (state: boolean, el: HTMLElement) => {
 .home {
   width: 100%;
   padding: rem(12);
-  background: url("assets/img/sky-bg.png");
+  background: hsla(0, 0%, 8%, .7) url("assets/img/sky-bg.png");;
 
   &__preview {
     height: calc(100vh - rem(48));
