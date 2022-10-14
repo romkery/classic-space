@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <div class="App">
+    <div class="app">
       <Header/>
       <NuxtPage/>
     </div>
@@ -10,9 +10,9 @@
 <script setup></script>
 
 
-<style>
+<style lang="scss">
 
-.App {
+.app {
   width: 100%;
   height: 100%;
 }

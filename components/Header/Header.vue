@@ -37,11 +37,13 @@
 <style lang="scss">
 
 .header {
+  width: 100%;
   position: sticky;
   top: 0;
   display: flex;
-  justify-content: space-between;
-  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(0, 0%, 1%);
 
   &__logo {
   }

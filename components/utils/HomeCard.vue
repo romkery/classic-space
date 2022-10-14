@@ -1,26 +1,23 @@
 <template>
-  <div :class="[!props.store.isInfoChecked &&
-    ['animate__animated', 'animate__fadeInUp'], ['home__info-news']]">
-    <p v-html="replaceWithBr(props.text)"/>
+  <div class="home__info-card">
+    <p v-html="replaceWithBr(card.text)"/>
     <img
-      :src="props.imgSrc"
+      :src="card.imgSrc"
       alt="card"/>
   </div>
 </template>
 
 <script setup lang="ts">
+import {vElementVisibility} from '@vueuse/components'
+import {ICards} from '~/store/Home';
+import {onMounted} from '@vue/runtime-core';
 
 interface IProps {
-  imgSrc: string,
-  text: string,
-  flexDirection: string
-  store: {
-    isInfoChecked: boolean
-  }
+  card: ICards
 }
 
-const props = defineProps<IProps>();
-const fd = ref(props.flexDirection);
+const {card} = defineProps<IProps>();
+const {flexDirection, gridArea, bg} = card.style
 
 function replaceWithBr(text: string) {
   return text.replace(/\n/g, "<br />")
@@ -31,26 +28,36 @@ function replaceWithBr(text: string) {
 <style lang="scss">
 @use './assets/scss/util' as *;
 
-.home__info-news {
+
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .home__info-card {
+    box-sizing: border-box;
+    background-blend-mode: overlay;
+    -webkit-backdrop-filter: blur(rem(2));
+    backdrop-filter: blur(rem(2));
+  }
+}
+
+.home__info-card {
   width: 100%;
-  height: 100vh;
   display: flex;
-  flex-direction: v-bind(fd);
+  grid-area: v-bind(gridArea);
   align-items: center;
-  animation-delay: 1.5s;
+  //flex-wrap: wrap;
+  background-color: v-bind(bg);
+  border: rem(1) solid hsl(255 0 0 / .1);
 
   img {
     width: min(30vw, rem(500));
     height: min(30vw, rem(500));
-    border-radius: rem(10);
     object-fit: cover;
   }
 
   p {
-    flex-grow: 1;
-    @include adaptive_font(60, 10);
+    @include adaptive_font(80, 10);
     word-break: break-all;
     text-align: center;
+    flex-grow: 1;
   }
 
   @include breakpoint-down(sm) {

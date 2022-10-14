@@ -14,6 +14,7 @@
   "dependencies": {
     "@nuxt/webpack-builder": "^3.0.0-rc.11",
     "@pinia/nuxt": "0.4.3",
+    "@vueuse/components": "^9.3.0",
     "@vueuse/core": "^9.3.0",
     "animate.css": "^4.1.1",
     "gh-pages": "^4.0.0",
