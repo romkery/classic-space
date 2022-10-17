@@ -8,11 +8,12 @@
           v-element-visibility="($event) => onElementVisibility($event, this.$refs.preview_title_h1)">DO YOU WANT TO GO
           TO
           SPACE?</h1>
-        <img
-          src="../assets/img/home/earth.png"
-          alt="earth"
-          ref="preview_title_img"
-          v-element-visibility="($event) => onElementVisibility($event, this.$refs.preview_title_img)">
+        <!--        <img-->
+        <!--          src="../assets/img/home/earth-gif.gif"-->
+        <!--          alt="earth"-->
+        <!--          ref="preview_title_img"-->
+        <!--          v-element-visibility="($event) => onElementVisibility($event, this.$refs.preview_title_img)">-->
+        <Earth/>
       </div>
       <h2
         ref="preview_h2"
@@ -36,7 +37,11 @@
 
 import {useHomeCardStore} from '~/store/Home';
 import HomeCard from '../components/utils/HomeCard.vue';
+import Earth from '../components/canvas/Earth';
 import {vElementVisibility} from '@vueuse/components'
+import * as THREE from 'three';
+import {$ref} from 'vue/macros';
+import {Ref} from '@vue/runtime-core';
 
 const {store} = useHomeCardStore();
 
@@ -69,6 +74,7 @@ const onElementVisibility = (state: boolean, el: HTMLElement) => {
   animateCSS(el, variable.animation);
 }
 
+
 </script>
 
 <style lang="scss" scoped>
@@ -100,8 +106,8 @@ const onElementVisibility = (state: boolean, el: HTMLElement) => {
       }
 
       img {
-        width: min(60vw, rem(500));
-        height: min(60vw, rem(500));
+        width: min(60vw, rem(400));
+        height: min(60vw, rem(400));
         object-fit: cover;
         animation-duration: 1.5s;
       }

@@ -33,8 +33,8 @@ function replaceWithBr(text: string) {
   .home__info-card {
     box-sizing: border-box;
     background-blend-mode: overlay;
-    -webkit-backdrop-filter: blur(rem(2));
-    backdrop-filter: blur(rem(2));
+    -webkit-backdrop-filter: blur(rem(1));
+    backdrop-filter: blur(rem(1));
   }
 }
 
@@ -43,9 +43,12 @@ function replaceWithBr(text: string) {
   display: flex;
   grid-area: v-bind(gridArea);
   align-items: center;
-  //flex-wrap: wrap;
-  background-color: v-bind(bg);
-  border: rem(1) solid hsl(255 0 0 / .1);
+  background-color: rgba(35, 35, 35, .5);
+  //background-color: v-bind(bg);
+  border: rem(1) solid hsl(255, 100%, 100%, .3);
+  border-radius: rem(10);
+  overflow: hidden;
+
 
   img {
     width: min(30vw, rem(500));
