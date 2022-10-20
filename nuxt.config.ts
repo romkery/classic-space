@@ -28,9 +28,16 @@ export default defineNuxtConfig({
             {rel: 'icon', type: 'image/png', href: '/favicon.ico'},
         ],
     },
-    build: {
-    },
+    build: {},
     modules: [
         '@pinia/nuxt',
     ],
+    hooks: {
+        "webpack:config"(config) {
+            config[0].module.rules.push({
+                test: /\.(glsl|vs|fs|vert|frag)$/,
+                use: ['raw-loader'],
+            })
+        },
+    },
 })

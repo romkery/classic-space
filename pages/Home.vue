@@ -1,18 +1,15 @@
 <template>
-
   <div class="home">
     <div class="home__preview">
       <div class="home__preview-title">
         <h1
           ref="preview_title_h1"
-          v-element-visibility="($event) => onElementVisibility($event, this.$refs.preview_title_h1)">DO YOU WANT TO GO
+          v-element-visibility="($event) => onElementVisibility($event, this.$refs.preview_title_h1)"
+        >
+          DO YOU WANT TO GO
           TO
-          SPACE?</h1>
-        <!--        <img-->
-        <!--          src="../assets/img/home/earth-gif.gif"-->
-        <!--          alt="earth"-->
-        <!--          ref="preview_title_img"-->
-        <!--          v-element-visibility="($event) => onElementVisibility($event, this.$refs.preview_title_img)">-->
+          SPACE?
+        </h1>
         <Earth/>
       </div>
       <h2
@@ -37,15 +34,12 @@
 
 import {useHomeCardStore} from '~/store/Home';
 import HomeCard from '../components/utils/HomeCard.vue';
-import Earth from '../components/canvas/Earth';
+import Earth from '../components/canvas/Earth.vue' ;
 import {vElementVisibility} from '@vueuse/components'
-import * as THREE from 'three';
-import {$ref} from 'vue/macros';
-import {Ref} from '@vue/runtime-core';
 
 const {store} = useHomeCardStore();
 
-const animateCSS = (element, animation, prefix = 'animate__') =>
+const animateCSS = (element, animation, prefix = 'animate__') => {
   // We create a Promise and return it
   new Promise((resolve, reject) => {
     const animationName = `${prefix}${animation}`;
@@ -60,9 +54,8 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
     }
 
     element.addEventListener('animationend', handleAnimationEnd, {once: true});
-
-  });
-
+  })
+}
 
 const onElementVisibility = (state: boolean, el: HTMLElement) => {
   let variable = store.animations[el['__vnode'].ref.r];
@@ -83,7 +76,7 @@ const onElementVisibility = (state: boolean, el: HTMLElement) => {
 .home {
   width: 100%;
   padding: rem(12);
-  background: hsla(0, 0%, 8%, .7) url("assets/img/sky-bg.png");;
+  background: hsla(0, 0%, 8%, .7) url("assets/img/sky-bg.png");
 
   &__preview {
     height: calc(100vh - rem(48));

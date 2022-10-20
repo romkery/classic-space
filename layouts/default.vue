@@ -2,12 +2,17 @@
   <v-app>
     <div class="app">
       <Header/>
-      <NuxtPage/>
+      <NuxtPage keepalive/>
     </div>
   </v-app>
 </template>
 
-<script setup></script>
+<script setup>
+import {useRoute} from 'nuxt/app';
+
+const route = useRoute();
+
+</script>
 
 
 <style lang="scss">

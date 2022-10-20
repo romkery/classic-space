@@ -1,100 +1,103 @@
 <template>
-  <div ref="canvas" class="container"></div>
+    <div ref="canvas" class="container"></div>
 </template>
+
 <script setup lang="ts">
-import * as THREE from 'three';
+import * as THREE from 'three';//@ts-ignore
+import vertexShader from '~/assets/shaders/vertex.glsl';//@ts-ignore
+import fragmentShader from '~/assets/shaders/fragment.glsl';//@ts-ignore
+import atmosphereFragmentShader from '~/assets/shaders/atmosphereFragment.glsl';//@ts-ignore
+import atmosphereVertexShader from '~/assets/shaders/atmosphereVertex.glsl';
 import {onMounted, Ref} from '@vue/runtime-core';
-import {GLTF, GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
-import {cameraPosition} from 'three/examples/jsm/nodes/shadernode/ShaderNodeBaseElements';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import {TrackballControls} from 'three/examples/jsm/controls/TrackballControls';
 
+// MAIN
 const canvas: Ref<HTMLElement> = ref(null);
-
+const texture = new THREE.TextureLoader().load('marble.jpg');
 const loader = new GLTFLoader();
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight);
-camera.position.set(1, 0, 2)
-let model: GLTF = null;
+const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({
   alpha: true,
   antialias: true
 });
 
+// INIT
+camera.position.z = 2
+renderer.setPixelRatio(window.devicePixelRatio)
+
+// CONTROLS
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableZoom = false
-controls.minPolarAngle = 1.57
 controls.maxPolarAngle = 1.57
+controls.minPolarAngle = 1
+controls.enableZoom = true
 controls.autoRotate = true
-controls.autoRotateSpeed = 30
+controls.autoRotateSpeed = 4
 controls.enableDamping = true
+controls.dampingFactor = 0.01
 controls.addEventListener('change', () => {
   requestAnimationFrame(() => {
-    if (controls.autoRotateSpeed < 30) {
-      controls.autoRotateSpeed += 0.6
+    if (controls.autoRotateSpeed < 4) {
+      controls.autoRotateSpeed += 0.1
     }
-    if (controls.autoRotateSpeed > 30) {
-      controls.autoRotateSpeed -= 0.6
+    if (controls.autoRotateSpeed > 4) {
+      controls.autoRotateSpeed -= 0.1
     }
   })
 })
 
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
 
-loader.load('crystal.glb', (gltf) => {
-  model = gltf;
-  model.scene.position.x = 0
-  scene.add(gltf.scene)
-  controls.target = model.scene.position
-
-  function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-    controls.update()
+// 3D
+const material = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    globeTexture: {
+      value: texture
+    }
   }
-
-  animate()
 })
 
+const sphere = new THREE.Mesh(new THREE.SphereGeometry(1, 100, 100),
+  material
+)
 
-// const hemiLight = new THREE.HemisphereLight('#fdfcfc', '#101018', 1);
-// scene.add(hemiLight);
+const atmosphere = new THREE.Mesh(new THREE.SphereGeometry(1, 100, 100),
+  new THREE.ShaderMaterial({
+    vertexShader: atmosphereVertexShader,
+    fragmentShader: atmosphereFragmentShader,
+    blending: THREE.AdditiveBlending,
+    side: THREE.BackSide,
+  })
+)
 
-const spotLight = new THREE.PointLight('#fcf128', 5)
-spotLight.position.set(-6, 3, -3);
+atmosphere.scale.set(1.1, 1.1, 1.1)
 
-spotLight.castShadow = true;
-
-spotLight.shadow.mapSize.width = 1024;
-spotLight.shadow.mapSize.height = 1024;
-
-spotLight.shadow.camera.near = 500;
-spotLight.shadow.camera.far = 4000;
-spotLight.shadow.camera.fov = 30;
-
-camera.add(spotLight);
-scene.add(camera)
-
-const directionalLight = new THREE.DirectionalLight('#fcf128', 2);
-directionalLight.position.set(0, -2, 10);
-scene.add(directionalLight);
-
+scene.add(camera, atmosphere, sphere)
 
 onMounted(() => {
+
   canvas.value.appendChild(renderer.domElement)
   renderer.setSize(canvas.value.clientWidth, canvas.value.clientHeight);
 
   canvas.value.addEventListener('pointerup', (event: PointerEvent) => {
-    console.log("formula " + (canvas.value.clientWidth - (canvas.value.clientWidth / 2 + event.offsetX)))
     const offsetX = (canvas.value.clientWidth - (canvas.value.clientWidth / 2 + event.offsetX))
-    let speed = -Math.round(offsetX / 30)
+    let speed = -Math.round(offsetX / 120)
     if (speed === -0) {
       speed = 1
     }
-    console.log(speed)
     controls.autoRotateSpeed = speed
-
   })
+
+  animate()
 })
+
 
 </script>
 <style scoped lang="scss">
@@ -103,8 +106,9 @@ onMounted(() => {
 .container {
   display: flex;
   justify-content: flex-start;
-  width: max(30vw, rem(150));
-  height: max(30vh, rem(200));
+  width: max(70vh, rem(150));
+  height: max(70vh, rem(200));
+  aspect-ratio: auto;
 }
 
 </style>

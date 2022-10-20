@@ -10,9 +10,12 @@
   },
   "devDependencies": {
     "@types/three": "^0.144.0",
+    "glslify-loader": "^2.0.0",
     "nuxt": "3.0.0-rc.11",
+    "raw-loader": "^4.0.2",
     "three": "^0.145.0",
-    "three-gltf-loader": "^1.111.0"
+    "three-gltf-loader": "^1.111.0",
+    "webpack-glsl-loader": "^1.0.1"
   },
   "dependencies": {
     "@nuxt/webpack-builder": "^3.0.0-rc.11",
