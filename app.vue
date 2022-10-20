@@ -9,8 +9,9 @@
 
 <script setup lang="ts">
 import 'animate.css'
+import {onBeforeMount, onBeforeUnmount} from '@vue/runtime-core';
 
-onMounted(() => {
+onBeforeMount(() => {
   const route = useRouter();
   route.push("/home");
 })

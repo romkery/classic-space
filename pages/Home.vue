@@ -105,7 +105,7 @@ const onElementVisibility = (state: boolean, el: HTMLElement) => {
         animation-duration: 1.5s;
       }
 
-      @include breakpoint-down(sm) {
+      @include breakpoint-down(md) {
         flex-direction: column-reverse;
         justify-content: center;
         text-align: center;

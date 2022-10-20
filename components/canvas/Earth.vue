@@ -11,7 +11,6 @@ import atmosphereVertexShader from '~/assets/shaders/atmosphereVertex.glsl';
 import {onMounted, Ref} from '@vue/runtime-core';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-
 // MAIN
 const canvas: Ref<HTMLElement> = ref(null);
 const texture = new THREE.TextureLoader().load('marble.jpg');
@@ -31,7 +30,7 @@ renderer.setPixelRatio(window.devicePixelRatio)
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.maxPolarAngle = 1.57
 controls.minPolarAngle = 1
-controls.enableZoom = true
+controls.enableZoom = false
 controls.autoRotate = true
 controls.autoRotateSpeed = 4
 controls.enableDamping = true
@@ -81,10 +80,45 @@ atmosphere.scale.set(1.1, 1.1, 1.1)
 
 scene.add(camera, atmosphere, sphere)
 
+const resizeCanvas = () => {
+  const width = canvas.value.clientWidth;
+  const height = canvas.value.clientHeight;
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(width, height);
+  setCanvasDimensions(renderer.domElement, width, height);
+}
+const resizeUpdateInterval = 10;
+const throttle = require('lodash.throttle');
+
+window.addEventListener(
+  'resize',
+  throttle(resizeCanvas,
+    resizeUpdateInterval,
+    {trailing: true}
+  )
+);
+
+function setCanvasDimensions(
+  canvas,
+  width,
+  height,
+  set2dTransform = false
+) {
+  const ratio = window.devicePixelRatio;
+  canvas.width = width * ratio;
+  canvas.height = height * ratio;
+  canvas.style.width = `rem(${width})`;
+  canvas.style.height = `rem(${height})`;
+  if (set2dTransform) {
+    canvas.getContext('2d').setTransform(ratio, 0, 0, ratio, 0, 0);
+  }
+}
+
 onMounted(() => {
 
   canvas.value.appendChild(renderer.domElement)
-  renderer.setSize(canvas.value.clientWidth, canvas.value.clientHeight);
+  resizeCanvas()
 
   canvas.value.addEventListener('pointerup', (event: PointerEvent) => {
     const offsetX = (canvas.value.clientWidth - (canvas.value.clientWidth / 2 + event.offsetX))
@@ -106,9 +140,25 @@ onMounted(() => {
 .container {
   display: flex;
   justify-content: flex-start;
-  width: max(70vh, rem(150));
-  height: max(70vh, rem(200));
-  aspect-ratio: auto;
+  width: rem(250);
+  height: rem(250);
+  aspect-ratio: 1 /1;
+
+
+  @include breakpoint(sm) {
+    width: rem(400);
+    height: rem(400);
+  }
+
+  @include breakpoint(md) {
+    width: rem(500);
+    height: rem(500);
+  }
+
+  @include breakpoint(lg) {
+    width: rem(600);
+    height: rem(600);
+  }
 }
 
 </style>
