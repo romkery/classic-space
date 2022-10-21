@@ -1,0 +1,83 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./pages/Home.vue?vue&type=style&index=0&id=7f245110&lang=scss&scoped=true ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.home[data-v-7f245110] {
+  width: 100%;
+  padding: 0.75rem;
+  background: hsla(0deg, 0%, 8%, 0.7) url(/_nuxt/assets/img/sky-bg.png);
+}
+.home__preview[data-v-7f245110] {
+  height: calc(100vh - 3rem);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.home__preview-title[data-v-7f245110] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+}
+.home__preview-title h1[data-v-7f245110] {
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  padding-right: min(5vw, 6.25rem);
+}
+@media (max-width: 47.9375em) {
+.home__preview-title h1[data-v-7f245110] {
+    font-size: calc(1.25rem + 102 * ((100vw - 150px) / 3840));
+}
+}
+@media (min-width: 47.9375em) {
+.home__preview-title h1[data-v-7f245110] {
+    font-size: calc(1.25rem + 60 * (100vw / 3840));
+}
+}
+.home__preview-title img[data-v-7f245110] {
+  width: min(60vw, 25rem);
+  height: min(60vw, 25rem);
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+}
+@media (max-width: 48.06125em) {
+.home__preview-title[data-v-7f245110] {
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+    height: initial;
+}
+}
+.home__preview h2[data-v-7f245110] {
+  text-align: center;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  justify-self: flex-end;
+  padding: 3.125rem;
+}
+@media (max-width: 47.9375em) {
+.home__preview h2[data-v-7f245110] {
+    font-size: calc(1.25rem + 85 * ((100vw - 150px) / 3840));
+}
+}
+@media (min-width: 47.9375em) {
+.home__preview h2[data-v-7f245110] {
+    font-size: calc(1.25rem + 50 * (100vw / 3840));
+}
+}
+.home__info[data-v-7f245110] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+@media (max-width: 35.99875em) {
+.home__info[data-v-7f245110] {
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+    height: initial;
+}
+}

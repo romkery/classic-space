@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[176],{4176:(c,e,n)=>{n.r(e),n.d(e,{default:()=>u});var t=n(1432);function s(d,a){return(0,t.wg)(),(0,t.iD)("h1",null,"Planet")}var r=n(3046);const l={},u=(0,r.Z)(l,[["render",s]])}}]);
