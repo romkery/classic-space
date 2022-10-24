@@ -10,7 +10,9 @@
           TO
           SPACE?
         </h1>
-        <Earth/>
+        <keep-alive>
+          <Earth/>
+        </keep-alive>
       </div>
       <h2
         ref="preview_h2"

@@ -62,7 +62,7 @@ onMounted(() => {
   background-color: hsla(0, 0%, 8%, .7);
   z-index: 100;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   flex-direction: column;
   position: absolute;
   transition: 0.3s ease-in;

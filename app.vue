@@ -9,16 +9,11 @@
 
 <script setup lang="ts">
 import 'animate.css'
-import {onBeforeMount, onBeforeUnmount} from '@vue/runtime-core';
-
-onBeforeMount(() => {
-  const route = useRouter();
-  route.push("/home");
-})
-
 
 </script>
 <style>
 .app {
+  width: 100%;
+  height: 100%;
 }
 </style>

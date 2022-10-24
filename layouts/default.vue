@@ -2,7 +2,7 @@
   <v-app>
     <div class="app">
       <Header/>
-      <NuxtPage keepalive/>
+      <NuxtPage/>
     </div>
   </v-app>
 </template>

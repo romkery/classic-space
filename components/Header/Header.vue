@@ -30,6 +30,7 @@
 
 import {useWindowSize} from '@vueuse/core';
 import HeaderMenu from '~/components/Header/HeaderMenu.vue';
+import {ref} from '@vue/reactivity';
 
 const tabs = ["home", "news", "planet", "about"]
 
@@ -73,7 +74,7 @@ const openMenu = (state: boolean) => {
     align-items: center;
     justify-content: center;
     height: rem(48);
-    width: 100vw;
+    width: 100%;
     padding: rem(10);
 
     @include breakpoint-down(sm) {

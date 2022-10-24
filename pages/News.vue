@@ -11,4 +11,7 @@ import DailyPicture from '~/components/News/DailyPicture.vue';
 </script>
 
 <style>
+.news {
+  width: 100%;
+}
 </style>
