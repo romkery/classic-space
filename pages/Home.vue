@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 
-import {useHomeCardStore} from '~/store/Home';
+import {useHomeCardStore} from '~/store/HomeStore';
 import HomeCard from '../components/utils/HomeCard.vue';
 import Earth from '../components/canvas/Earth.vue' ;
 import {vElementVisibility} from '@vueuse/components'

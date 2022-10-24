@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import {vElementVisibility} from '@vueuse/components'
-import {ICards} from '~/store/Home';
+import {ICards} from '~/store/HomeStore';
 import {onMounted} from '@vue/runtime-core';
 
 interface IProps {
