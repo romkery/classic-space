@@ -78,7 +78,6 @@ const onElementVisibility = (state: boolean, el: HTMLElement) => {
 .home {
   width: 100%;
   padding: rem(12);
-  background: hsla(0, 0%, 8%, .7) url("assets/img/sky-bg.png");
 
   &__preview {
     height: calc(100vh - rem(48));
@@ -92,7 +91,6 @@ const onElementVisibility = (state: boolean, el: HTMLElement) => {
       justify-content: center;
       align-items: center;
       flex-grow: 2;
-
 
       h1 {
         animation-duration: 1.5s;
@@ -119,8 +117,8 @@ const onElementVisibility = (state: boolean, el: HTMLElement) => {
       @include adaptive_font(70, 20);
       text-align: center;
       animation-duration: 2s;
-      justify-self: flex-end;
-      padding: rem(50);
+      justify-self: end;
+      padding-bottom: rem(80);
     }
   }
 

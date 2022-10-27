@@ -1,17 +1,9 @@
 import {defineStore} from 'pinia';
+import DailyPictureAPI, {IDailyPicture} from '~/api/News/DailyPictureAPI';
+import {ref} from '@vue/reactivity';
 import {reactive, Ref} from '@vue/runtime-core';
-import DailyPictureAPI from '~/api/News/DailyPictureAPI';
 
-export const useNewsStore = defineStore("apiStore", () => {
+export const useNewsStore = defineStore("newsStore", () => {
 
-    let APOD: any = reactive({});
 
-    const getAPODData = () => {
-        APOD = DailyPictureAPI.getAPOD();
-        console.log(APOD)
-        return APOD;
-    }
-
-    const store = {APOD, getAPODData}
-    return {store}
 })

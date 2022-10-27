@@ -16,6 +16,7 @@
 <script setup lang="ts">
 
 import {onMounted, Ref} from '@vue/runtime-core';
+import {ref} from '@vue/reactivity';
 
 interface IProps {
   isOpenMenu: Ref<boolean>
@@ -27,7 +28,6 @@ interface IProps {
 const {openMenu, tabs, toUpper} = defineProps<IProps>();
 const menu: Ref<HTMLElement> = ref(null);
 const closeMenu = () => {
-  console.log(menu)
   menu.value.style.top = '-30vh'
   menu.value.style.opacity = '0'
   menu.value.addEventListener('transitionend', () => openMenu(false))

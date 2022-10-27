@@ -83,7 +83,7 @@ atmosphere.scale.set(1.1, 1.1, 1.1)
 scene.add(camera, atmosphere, sphere)
 
 const resizeCanvas = () => {
-  if (canvas.value.clientWidth == 0) {
+  if (canvas.value?.clientWidth == 0) {
     setTimeout(() => resizeCanvas(), 20)
   }
   const width = canvas.value?.clientWidth;
@@ -122,8 +122,6 @@ function setCanvasDimensions(
 
 onMounted(async () => {
   renderer.render(scene, camera)
-  console.log(renderer.domElement)
-  console.log(canvas.value)
   canvas.value.clientWidth
   await canvas.value.appendChild(renderer.domElement);
 

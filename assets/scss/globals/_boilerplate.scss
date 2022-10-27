@@ -1,4 +1,4 @@
-@use './../util' as u;
+@use './assets/scss/util' as *;
 @import './../globals/_variables.scss';
 
 html {
@@ -22,3 +22,51 @@ body {
 .router-link-exact-active, .router-link-exact-active, a {
   color: white;
 }
+
+//VUETIFY
+.v-overlay {
+
+  &__scrim {
+    background-color: hsla(0, 0%, 0%, .5);
+    box-sizing: border-box;
+    background-blend-mode: overlay;
+    -webkit-backdrop-filter: blur(rem(2));
+    backdrop-filter: blur(rem(4));
+    opacity: 1;
+  }
+
+  &__content {
+    position: relative;
+    width: rem(500);
+    height: rem(500);
+    margin: auto;
+
+    @include breakpoint-down(sm) {
+      width: rem(300);
+      height: rem(300);
+    }
+
+    @include breakpoint(lg) {
+      width: rem(600);
+      height: rem(600);
+    }
+
+    img {
+      object-fit: cover;
+      width: rem(500);
+      height: rem(500);
+      border-radius: rem(10);
+
+      @include breakpoint-down(sm) {
+        width: rem(300);
+        height: rem(300);
+      }
+
+      @include breakpoint(lg) {
+        width: rem(600);
+        height: rem(600);
+      }
+    }
+  }
+}
+

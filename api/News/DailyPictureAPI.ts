@@ -1,9 +1,7 @@
 import {useFetch} from '#app';
+import {UrIInstance} from '~/api/instance';
 
-const apiKey: string = '?api_key=afnJ1XFijXcMMDHkRZY16keAbGZNgRY2Va0b8NCu';
-const baseUrl: string = `https://api.nasa.gov/`;
-
-export interface IAPOD {
+export interface IDailyPicture {
     copyright: string
     date: string
     explanation: string
@@ -15,8 +13,8 @@ export interface IAPOD {
 }
 
 const DailyPictureAPI = {
-    getAPOD: async () => {
-        const {data} = await useFetch(`${baseUrl}planetary/apod${apiKey}`)
+    getDailyPicture: async () => {
+        const data: IDailyPicture = await useFetch(`${UrIInstance.baseUrl}planetary/apod?date=2004-08-23&${UrIInstance.key}`).data
         return data;
     }
 }
